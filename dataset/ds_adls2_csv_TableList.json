@@ -1,0 +1,37 @@
+{
+	"name": "ds_adls2_csv_TableList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS2_generaladls2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_table_name": {
+				"type": "string"
+			},
+			"p_schema_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().p_table_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('sample_sales_db/',dataset().p_schema_name,'/',\nreplace(dataset().p_table_name,'.csv',''))",
+					"type": "Expression"
+				},
+				"fileSystem": "row-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
