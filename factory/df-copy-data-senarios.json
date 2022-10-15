@@ -1,0 +1,9 @@
+{
+	"name": "df-copy-data-senarios",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e7de6ad0-fdac-4b7e-a948-fcd88eb8dd2d",
+		"tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3"
+	}
+}
