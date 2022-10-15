@@ -95,11 +95,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"p_table_name": {
-											"value": "@item().table_name",
+											"value": "@item().TABLE_NAME",
 											"type": "Expression"
 										},
 										"p_schema_name": {
-											"value": "@item().schema_name",
+											"value": "@item().TABLE_SCHEMA",
 											"type": "Expression"
 										}
 									}
