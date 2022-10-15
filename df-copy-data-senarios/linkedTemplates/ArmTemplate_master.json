@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "df-copy-data-senarios"
+		},
+		"AzureSql_sample_sql_instance_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
+		},
+		"ADLS2_generaladls2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS2_generaladls2'"
+		},
+		"ADLS2_generaladls2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://generaladls2.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "df-copy-data-senarios_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSql_sample_sql_instance_connectionString": {
+						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
+					},
+					"ADLS2_generaladls2_accountKey": {
+						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
+					},
+					"ADLS2_generaladls2_properties_typeProperties_url": {
+						"value": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
