@@ -29,7 +29,7 @@
 							"p_schema_name": "'none'"
 						}
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			},
 			{
@@ -121,6 +121,79 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "get_list_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_AzureSqlTableList",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_table_name": {
+								"value": "@activity('get_list_tables').output.firstRow.TABLE_NAME",
+								"type": "Expression"
+							},
+							"p_schema_name": {
+								"value": "@activity('get_list_tables').output.firstRow.TABLE_SCHEMA",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adls2_csv_TableList",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_table_name": "'safd'",
+							"p_schema_name": "'sfsafsf'"
+						}
+					}
+				]
 			}
 		],
 		"annotations": []
