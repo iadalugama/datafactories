@@ -5,9 +5,9 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "c\\tmp",
+			"host": "C:\\tmp",
 			"userId": "indalug@microsoft.com",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4YjY1NGJiZS1jYjk3LTQ1YzMtYTY5Ny1kZmU3OGIzY2Q3YjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmMjViZjI1ZC1hMWNiLTQ3OTMtYTliOC1jOTg0NTFjNGI4MTgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "on-prem",
