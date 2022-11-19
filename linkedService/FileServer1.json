@@ -6,8 +6,8 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "C:\\tmp\\",
-			"userId": "saadmin",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5MTUyZDUzYi03YmFmLTQ2NzAtYjllYi00MzJjYmViMzllOWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userId": "indalug@microsoft.com",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YzVlODMyZi03YTFlLTQyYjgtOGNhOC04MzU5MTNjOGEzZGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "on-prem",
