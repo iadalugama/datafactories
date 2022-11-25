@@ -1,0 +1,16 @@
+{
+	"name": "Azurepgsql_promocode_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzurePgSql_test_rogers",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "promotion_codes"
+		}
+	}
+}
