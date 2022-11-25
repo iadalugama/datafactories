@@ -7,7 +7,26 @@
 		},
 		"annotations": [],
 		"type": "AzurePostgreSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "promotion_code",
+				"type": "character varying",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "promotion_id",
+				"type": "character varying",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "last_modified_date_time",
+				"type": "date",
+				"precision": 0,
+				"scale": 0
+			}
+		],
 		"typeProperties": {
 			"schema": "public",
 			"table": "promotion_codes"
