@@ -5,10 +5,13 @@
 		"factoryName": {
 			"value": "df-copy-data-senarios"
 		},
+		"ADLS2_generaladls2_accountKey": {
+			"value": ""
+		},
 		"AzureSql_sample_sql_instance_connectionString": {
 			"value": ""
 		},
-		"ADLS2_generaladls2_accountKey": {
+		"AzurePgSql_test_rogers_connectionString": {
 			"value": ""
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
