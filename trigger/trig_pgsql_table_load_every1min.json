@@ -1,5 +1,5 @@
 {
-	"name": "trigger1",
+	"name": "trig_pgsql_table_load_every1min",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
