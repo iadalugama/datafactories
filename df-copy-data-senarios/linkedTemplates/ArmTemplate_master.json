@@ -11,13 +11,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLS2_generaladls2'"
 		},
-		"AzureSql_sample_sql_instance_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
-		},
 		"AzurePgSql_test_rogers_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzurePgSql_test_rogers'"
+		},
+		"AzureSql_sample_sql_instance_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
 			"type": "string",
@@ -53,11 +53,11 @@
 					"ADLS2_generaladls2_accountKey": {
 						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
 					},
-					"AzureSql_sample_sql_instance_connectionString": {
-						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
-					},
 					"AzurePgSql_test_rogers_connectionString": {
 						"value": "[parameters('AzurePgSql_test_rogers_connectionString')]"
+					},
+					"AzureSql_sample_sql_instance_connectionString": {
+						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
 					},
 					"ADLS2_generaladls2_properties_typeProperties_url": {
 						"value": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]"

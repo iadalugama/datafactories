@@ -8,10 +8,10 @@
 		"ADLS2_generaladls2_accountKey": {
 			"value": ""
 		},
-		"AzureSql_sample_sql_instance_connectionString": {
+		"AzurePgSql_test_rogers_connectionString": {
 			"value": ""
 		},
-		"AzurePgSql_test_rogers_connectionString": {
+		"AzureSql_sample_sql_instance_connectionString": {
 			"value": ""
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
