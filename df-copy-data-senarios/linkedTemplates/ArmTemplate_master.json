@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
 		},
+		"Oracle1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Oracle1'"
+		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://generaladls2.dfs.core.windows.net/"
@@ -58,6 +62,9 @@
 					},
 					"AzureSql_sample_sql_instance_connectionString": {
 						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
+					},
+					"Oracle1_connectionString": {
+						"value": "[parameters('Oracle1_connectionString')]"
 					},
 					"ADLS2_generaladls2_properties_typeProperties_url": {
 						"value": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]"
