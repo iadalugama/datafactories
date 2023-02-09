@@ -134,7 +134,7 @@
 							"typeProperties": {
 								"variableName": "tblwritecnt",
 								"value": {
-									"value": "@Concat(activity('get_list_tables').output.value\n,'readrds '\n,string(activity('Copy data from sqlpass to adlsg2').output.dataRead)\n ,' writes '\n ,string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)\n)",
+									"value": "@Concat('table name : ', item().TABLE_NAME\n,'readrds : '\n,string(activity('Copy data from sqlpass to adlsg2').output.dataRead)\n ,' writes : '\n ,string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)\n)",
 									"type": "Expression"
 								}
 							}
