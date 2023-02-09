@@ -134,7 +134,26 @@
 							"typeProperties": {
 								"variableName": "tblwritecnt",
 								"value": {
-									"value": "@string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)",
+									"value": "@Concat(activity('get_list_tables').output.value\n,'readrds '\n,string(activity('Copy data from sqlpass to adlsg2').output.dataRead)\n ,' writes '\n ,string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)\n)",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@if(equals(variables('tblcount'),'12'),'True' , 'False')",
 									"type": "Expression"
 								}
 							}
