@@ -478,6 +478,14 @@
 						"defaultValue": "/"
 					}
 				},
+				"variables": {
+					"tblcount": {
+						"type": "String"
+					},
+					"tblwritecnt": {
+						"type": "String"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -680,6 +688,26 @@
 											}
 										}
 									]
+								},
+								{
+									"name": "Set variable1",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Copy data from sqlpass to adlsg2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "tblwritecnt",
+										"value": {
+											"value": "@string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
@@ -688,6 +716,14 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"variables": {
+					"tblcount": {
+						"type": "String"
+					},
+					"tblwritecnt": {
+						"type": "String"
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2022-10-15T19:43:55Z"
