@@ -134,7 +134,7 @@
 							"typeProperties": {
 								"variableName": "tblcount",
 								"value": {
-									"value": "@activity('Copy data from sqlpass to adlsg2').output.dataRead",
+									"value": "@string(activity('Copy data from sqlpass to adlsg2').output.dataRead)",
 									"type": "Expression"
 								}
 							}
