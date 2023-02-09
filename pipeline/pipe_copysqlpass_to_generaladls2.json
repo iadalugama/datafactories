@@ -132,9 +132,9 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "tblcount",
+								"variableName": "tblwritecnt",
 								"value": {
-									"value": "@string(activity('Copy data from sqlpass to adlsg2').output.dataRead)",
+									"value": "@string(activity('Copy data from sqlpass to adlsg2').output.dataWritten)",
 									"type": "Expression"
 								}
 							}
@@ -145,6 +145,9 @@
 		],
 		"variables": {
 			"tblcount": {
+				"type": "String"
+			},
+			"tblwritecnt": {
 				"type": "String"
 			}
 		},
