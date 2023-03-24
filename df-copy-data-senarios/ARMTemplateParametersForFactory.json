@@ -14,7 +14,7 @@
 		"AzureSql_sample_sql_instance_connectionString": {
 			"value": ""
 		},
-		"Oracle1_connectionString": {
+		"SqlServerOnPrem_connectionString": {
 			"value": ""
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {

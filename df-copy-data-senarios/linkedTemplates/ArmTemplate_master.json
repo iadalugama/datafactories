@@ -19,9 +19,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
 		},
-		"Oracle1_connectionString": {
+		"SqlServerOnPrem_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'Oracle1'"
+			"metadata": "Secure string for 'connectionString' of 'SqlServerOnPrem'"
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
 			"type": "string",
@@ -63,8 +63,8 @@
 					"AzureSql_sample_sql_instance_connectionString": {
 						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
 					},
-					"Oracle1_connectionString": {
-						"value": "[parameters('Oracle1_connectionString')]"
+					"SqlServerOnPrem_connectionString": {
+						"value": "[parameters('SqlServerOnPrem_connectionString')]"
 					},
 					"ADLS2_generaladls2_properties_typeProperties_url": {
 						"value": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]"
@@ -72,6 +72,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "df-copy-data-senarios_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'df-copy-data-senarios_ArmTemplate_0')]"
+			]
 		}
 	]
 }
