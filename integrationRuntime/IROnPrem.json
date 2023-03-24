@@ -1,0 +1,7 @@
+{
+	"name": "IROnPrem",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "my local laptop IR for SQL server"
+	}
+}
