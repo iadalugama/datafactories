@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_lgz_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSql_sample_sql_instance",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_lgz_20230324"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_MainControl"
+		}
+	}
+}
