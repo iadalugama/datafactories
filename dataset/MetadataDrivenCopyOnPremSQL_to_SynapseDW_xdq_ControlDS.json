@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyOnPremSQL_to_SynapseDW_xdq_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSql_sample_sql_instance",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyOnPremSQL_to_SynapseDW_xdq_20230406"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_MainControl"
+		}
+	}
+}
