@@ -114,7 +114,7 @@
 			}
 		},
 		"folder": {
-			"name": "MetadataDrivenCopyTask_lgz_20230324"
+			"name": "MetadataDrivenCopyTask_OnpremSQL_to_ADLSG2"
 		},
 		"annotations": [
 			"MetadataDrivenSolution"
