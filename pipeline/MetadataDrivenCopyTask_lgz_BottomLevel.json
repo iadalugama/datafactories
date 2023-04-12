@@ -129,6 +129,10 @@
 															"cw_fileSystem": {
 																"value": "@json(item().SinkObjectSettings).fileSystem",
 																"type": "Expression"
+															},
+															"fld_path": {
+																"value": "concat(@dataset().cw_folderPath,'/', @json(item().SourceObjectSettings).schema)",
+																"type": "Expression"
 															}
 														}
 													}
@@ -283,6 +287,10 @@
 															"cw_fileSystem": {
 																"value": "@json(item().SinkObjectSettings).fileSystem",
 																"type": "Expression"
+															},
+															"fld_path": {
+																"value": "@concat(json(item().SinkObjectSettings).folderPath,'/',json(item().SourceObjectSettings).schema)",
+																"type": "Expression"
 															}
 														}
 													}
@@ -433,6 +441,10 @@
 													},
 													"cw_fileSystem": {
 														"value": "@json(item().SinkObjectSettings).fileSystem",
+														"type": "Expression"
+													},
+													"fld_path": {
+														"value": "@concat(json(item().SinkObjectSettings).folderPath,'/',json(item().SourceObjectSettings).schema)",
 														"type": "Expression"
 													}
 												}
