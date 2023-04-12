@@ -14,6 +14,9 @@
 		"AzureSql_sample_sql_instance_connectionString": {
 			"value": ""
 		},
+		"AzureSynapseSynapsewsp01_connectionString": {
+			"value": ""
+		},
 		"SqlServerOnPrem_connectionString": {
 			"value": ""
 		},

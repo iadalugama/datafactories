@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSql_sample_sql_instance'"
 		},
+		"AzureSynapseSynapsewsp01_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSynapseSynapsewsp01'"
+		},
 		"SqlServerOnPrem_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServerOnPrem'"
@@ -62,6 +66,9 @@
 					},
 					"AzureSql_sample_sql_instance_connectionString": {
 						"value": "[parameters('AzureSql_sample_sql_instance_connectionString')]"
+					},
+					"AzureSynapseSynapsewsp01_connectionString": {
+						"value": "[parameters('AzureSynapseSynapsewsp01_connectionString')]"
 					},
 					"SqlServerOnPrem_connectionString": {
 						"value": "[parameters('SqlServerOnPrem_connectionString')]"
