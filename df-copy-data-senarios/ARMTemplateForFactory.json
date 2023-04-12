@@ -1062,7 +1062,7 @@
 																		"type": "Expression"
 																	},
 																	"fld_path": {
-																		"value": "concat(@dataset().cw_folderPath,'/', @json(item().SourceObjectSettings).schema)",
+																		"value": "@concat(json(item().SinkObjectSettings).folderPath,'/',\n json(item().SourceObjectSettings).schema,'/',\n  json(item().SourceObjectSettings).table\n )",
 																		"type": "Expression"
 																	}
 																}
