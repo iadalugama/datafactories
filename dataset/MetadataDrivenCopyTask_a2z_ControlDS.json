@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_a2z_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSql_sample_sql_instance",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_a2z_20230417"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MainControlTable_a2zindika"
+		}
+	}
+}
