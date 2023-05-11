@@ -12,7 +12,7 @@
 			"ssisProperties": {
 				"catalogInfo": {
 					"catalogServerEndpoint": "sample-sql-instance.database.windows.net",
-					"catalogAdminUserName": "sa",
+					"catalogAdminUserName": "saadmin",
 					"catalogAdminPassword": {
 						"type": "SecureString",
 						"value": "**********"
