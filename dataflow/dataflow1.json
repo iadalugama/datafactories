@@ -1,0 +1,57 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Xml1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "flatten2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,Report_Data} as ({urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry} as ({urn:com.workday.report/CR_Data_Lake_CCH,CC} as ({urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor} as string, {urn:com.workday.report/CR_Data_Lake_CCH,ID} as ({urn:com.workday.report/CR_Data_Lake_CCH,@type} as string, {urn:com.workday.report/CR_Data_Lake_CCH,_value_} as string)[]), {urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group} as ({urn:com.workday.report/CR_Data_Lake_CCH,L2} as ({urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor} as string, {urn:com.workday.report/CR_Data_Lake_CCH,ID} as ({urn:com.workday.report/CR_Data_Lake_CCH,@type} as string, {urn:com.workday.report/CR_Data_Lake_CCH,_value_} as string)[]), {urn:com.workday.report/CR_Data_Lake_CCH,L3} as ({urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor} as string, {urn:com.workday.report/CR_Data_Lake_CCH,ID} as ({urn:com.workday.report/CR_Data_Lake_CCH,@type} as string, {urn:com.workday.report/CR_Data_Lake_CCH,_value_} as string)[]))))",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     validationMode: 'none',",
+				"     namespaces: true) ~> source1",
+				"source1 foldDown(unroll({urn:com.workday.report/CR_Data_Lake_CCH,Report_Data}.{urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry}.{urn:com.workday.report/CR_Data_Lake_CCH,CC}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}),",
+				"     mapColumn(",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor} = {urn:com.workday.report/CR_Data_Lake_CCH,Report_Data}.{urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry}.{urn:com.workday.report/CR_Data_Lake_CCH,CC}.{urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor},",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,@type} = {urn:com.workday.report/CR_Data_Lake_CCH,Report_Data}.{urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry}.{urn:com.workday.report/CR_Data_Lake_CCH,CC}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}.{urn:com.workday.report/CR_Data_Lake_CCH,@type},",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,_value_} = {urn:com.workday.report/CR_Data_Lake_CCH,Report_Data}.{urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry}.{urn:com.workday.report/CR_Data_Lake_CCH,CC}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}.{urn:com.workday.report/CR_Data_Lake_CCH,_value_},",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group} = {urn:com.workday.report/CR_Data_Lake_CCH,Report_Data}.{urn:com.workday.report/CR_Data_Lake_CCH,Report_Entry}.{urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 foldDown(unrollMultiple({urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}.{urn:com.workday.report/CR_Data_Lake_CCH,L2}.{urn:com.workday.report/CR_Data_Lake_CCH,ID},{urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}.{urn:com.workday.report/CR_Data_Lake_CCH,L3}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}),",
+				"     mapColumn(",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor},",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,@type},",
+				"          {urn:com.workday.report/CR_Data_Lake_CCH,_value_},",
+				"          Descriptor = {urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}.{urn:com.workday.report/CR_Data_Lake_CCH,L2}.{urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor},",
+				"          L2_type = {urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}.{urn:com.workday.report/CR_Data_Lake_CCH,L2}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}.{urn:com.workday.report/CR_Data_Lake_CCH,@type},",
+				"          L2_value = {urn:com.workday.report/CR_Data_Lake_CCH,Cost_Center_Hierarchies_group}.{urn:com.workday.report/CR_Data_Lake_CCH,L2}.{urn:com.workday.report/CR_Data_Lake_CCH,ID}.{urn:com.workday.report/CR_Data_Lake_CCH,_value_},",
+				"          l3_type = {urn:com.workday.report/CR_Data_Lake_CCH,@Descriptor}",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten2"
+			]
+		}
+	}
+}

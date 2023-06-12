@@ -1,0 +1,19 @@
+{
+	"name": "Xml1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS2_generaladls2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Xml",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "indika_response_Cost_Center_Hir.xml",
+				"folderPath": "sample_xml_data",
+				"fileSystem": "row-data"
+			}
+		}
+	}
+}
