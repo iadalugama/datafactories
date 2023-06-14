@@ -1,0 +1,98 @@
+{
+	"name": "CopyPipeline_bgo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_bgo",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "row-data/sample_xml_data/response_Cost_Center_Hir.xml"
+					},
+					{
+						"name": "Destination",
+						"value": "row-data/sample_xml_data/abc.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "XmlSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "XmlReadSettings",
+							"validationMode": "none"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['wd:@type']"
+								},
+								"sink": {
+									"name": "wd:@type"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['_value_']"
+								},
+								"sink": {
+									"name": "_value_"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:@Descriptor']"
+								},
+								"sink": {
+									"name": "wd:@Descriptor"
+								}
+							}
+						],
+						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_bgo",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_bgo",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
