@@ -53,26 +53,29 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['wd:@type']"
+									"path": "['wd:@type']"
 								},
 								"sink": {
-									"name": "wd:@type"
+									"name": "wd:@type",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['_value_']"
+									"path": "['_value_']"
 								},
 								"sink": {
-									"name": "_value_"
+									"name": "_value_",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:@Descriptor']"
+									"path": "['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd:@Descriptor"
+									"name": "wd:@Descriptor",
+									"type": "String"
 								}
 							}
 						],
