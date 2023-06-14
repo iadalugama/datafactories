@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "indika_response_Cost_Center_Hir.xml",
+				"fileName": "response_Cost_Center_Hir.xml",
 				"folderPath": "sample_xml_data",
 				"fileSystem": "row-data"
 			}
