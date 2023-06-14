@@ -25,7 +25,11 @@
 						"formatSettings": {
 							"type": "XmlReadSettings",
 							"validationMode": "none",
-							"namespaces": true
+							"detectDataType": true,
+							"namespaces": true,
+							"namespacePrefixes": {
+								"['wd:Report_Data']['wd:Report_Entry']": "A"
+							}
 						}
 					},
 					"sink": {
@@ -45,74 +49,26 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['wd:@type']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:CC_wd:ID'][0]['wd:@type"
+									"name": "wd:@type"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:CC']['wd:ID'][0]['_value_']"
+									"path": "['wd:CC'][0]['wd:ID'][0]['_value_']"
 								},
 								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:CC_wd:ID'][0]['_value_"
+									"name": "_value_"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:CC']['wd:@Descriptor']"
+									"path": "['wd:CC'][0]['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:CC_wd:@Descriptor"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['wd:@type']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L3_wd:ID'][0]['wd:@type"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['_value_']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L3_wd:ID'][0]['_value_"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:@Descriptor']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L3_wd:@Descriptor"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['wd:@type']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L2_wd:ID'][0]['wd:@type"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['_value_']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L2_wd:ID'][0]['_value_"
-								}
-							},
-							{
-								"source": {
-									"path": "['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:@Descriptor']"
-								},
-								"sink": {
-									"name": "wd:Report_Data_wd:Report_Entry'][0]['wd:Cost_Center_Hierarchies_group_wd:L2_wd:@Descriptor"
+									"name": "wd:@Descriptor"
 								}
 							}
 						],
