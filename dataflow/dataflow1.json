@@ -10,30 +10,17 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
-				},
-				{
-					"dataset": {
-						"referenceName": "Xml1",
-						"type": "DatasetReference"
-					},
-					"name": "source2"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
 					"name": "flatten1"
-				},
-				{
-					"name": "flatten2"
-				},
-				{
-					"name": "flatten3"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          {A:Report_Data} as ({A:Report_Entry} as ({A:CC} as ({A:Descriptor} as string, {A:ID} as ({A:_value_} as string, {A:type} as string)[]), {A:Cost_Center_Hierarchies_group} as ({A:L2} as ({A:Descriptor} as string, {A:ID} as ({A:_value_} as string, {A:type} as string)[]), {A:L3} as ({A:Descriptor} as string, {A:ID} as ({A:_value_} as string, {A:type} as string)[]))))",
+				"          {A:Report_Data} as ({A:Report_Entry} as ({A:CC} as ({A:Descriptor} as string, {A:ID} as ({A:_value_} as string, {A:type} as string)[])[])[])",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -41,41 +28,14 @@
 				"     validationMode: 'none',",
 				"     namespaces: true,",
 				"     namespacePrefixes: ['urn:com.workday.report/CR_Data_Lake_CCH'->'A']) ~> source1",
-				"source(output(",
-				"          {B:Report_Data} as ({B:Report_Entry} as ({B:CC} as ({B:Descriptor} as string, {B:ID} as ({B:_value_} as string, {B:type} as string)[]), {B:Cost_Center_Hierarchies_group} as ({B:L2} as ({B:Descriptor} as string, {B:ID} as ({B:_value_} as string, {B:type} as string)[]), {B:L3} as ({B:Descriptor} as string, {B:ID} as ({B:_value_} as string, {B:type} as string)[]))))",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false,",
-				"     validationMode: 'none',",
-				"     namespaces: true,",
-				"     namespacePrefixes: ['urn:com.workday.report/CR_Data_Lake_CCH'->'B']) ~> source2",
 				"source1 foldDown(unroll({A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:ID}),",
 				"     mapColumn(",
-				"          cc_Descriptor = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:Descriptor},",
-				"          cc_value = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:ID}.{A:_value_},",
-				"          cc_type = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:ID}.{A:type}",
+				"          {A:Descriptor} = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:Descriptor},",
+				"          {A:_value_} = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:ID}.{A:_value_},",
+				"          {A:type} = {A:Report_Data}.{A:Report_Entry}.{A:CC}.{A:ID}.{A:type}",
 				"     ),",
 				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> flatten1",
-				"flatten1 foldDown(unroll({A:Cost_Center_Hierarchies_group}.{A:L2}.{A:ID}),",
-				"     mapColumn(",
-				"          cc_Descriptor,",
-				"          cc_value,",
-				"          cc_type,",
-				"          l2_Descriptor = {A:Cost_Center_Hierarchies_group}.{A:L2}.{A:Descriptor},",
-				"          l2_value_ = {A:Cost_Center_Hierarchies_group}.{A:L2}.{A:ID}.{A:_value_},",
-				"          l2_type = {A:Cost_Center_Hierarchies_group}.{A:L2}.{A:ID}.{A:type},",
-				"          l3_value = {A:Cost_Center_Hierarchies_group}.{A:L3}.{A:ID}.{A:_value_}",
-				"     ),",
-				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> flatten2",
-				"source2 foldDown(unroll({B:Report_Data}.{B:Report_Entry}.{B:Cost_Center_Hierarchies_group}.{B:L3}.{B:ID}),",
-				"     mapColumn(",
-				"          {B:Report_Data} = {B:Report_Data}.{B:Report_Entry}.{B:Cost_Center_Hierarchies_group}.{B:L3}.{B:ID}.{B:_value_}",
-				"     ),",
-				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> flatten3"
+				"     skipDuplicateMapOutputs: false) ~> flatten1"
 			]
 		}
 	}
