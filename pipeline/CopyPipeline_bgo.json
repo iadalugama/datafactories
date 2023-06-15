@@ -53,70 +53,87 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['wd:ID'][0]['wd:@type']"
+									"path": "['wd:@type']"
 								},
 								"sink": {
-									"name": "wd:@type"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:CC_wd:ID'][0]['wd:@type",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][0]['_value_']"
+									"path": "['_value_']"
 								},
 								"sink": {
-									"name": "_value_"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:CC_wd:ID'][0]['_value_",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:@Descriptor']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC'][0]['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd:@Descriptor"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:CC_wd:@Descriptor",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][1]['wd:@type']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd_1_type"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L3_wd:@Descriptor",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][1]['_value_']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:@Descriptor']"
 								},
 								"sink": {
-									"name": "wd_1_value"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L2_wd:@Descriptor",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][2]['wd:@type']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['wd:@type']"
 								},
 								"sink": {
-									"name": "wd_2_type"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L3_wd:ID'][0]['wd:@type",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][2]['_value_']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['_value_']"
 								},
 								"sink": {
-									"name": "wd_2_value"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L3_wd:ID'][0]['_value_",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][3]['wd:@type']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['wd:@type']"
 								},
 								"sink": {
-									"name": "unknows"
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L2_wd:ID'][0]['wd:@type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['_value_']"
+								},
+								"sink": {
+									"name": "wd:Report_Data_wd:Report_Entry_wd:Cost_Center_Hierarchies_group_wd:L2_wd:ID'][0]['_value_",
+									"type": "String"
 								}
 							}
 						],
-						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']",
+						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']['wd:ID']",
 						"mapComplexValuesToString": true
 					}
 				},
