@@ -53,6 +53,15 @@
 						"mappings": [
 							{
 								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']['wd:@Descriptor']"
+								},
+								"sink": {
+									"name": "cc_Descriptor",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"path": "['wd:@type']"
 								},
 								"sink": {
@@ -71,46 +80,10 @@
 							},
 							{
 								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC'][0]['wd:@Descriptor']"
-								},
-								"sink": {
-									"name": "cc_Descriptor",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:@Descriptor']"
-								},
-								"sink": {
-									"name": "cch_l3_descriptor",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:@Descriptor']"
 								},
 								"sink": {
 									"name": "cch_l2_descriptor",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['wd:@type']"
-								},
-								"sink": {
-									"name": "cch_l3_type",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['_value_']"
-								},
-								"sink": {
-									"name": "cch_l3_value",
 									"type": "String"
 								}
 							},
@@ -129,6 +102,33 @@
 								},
 								"sink": {
 									"name": "cch_l2_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:@Descriptor']"
+								},
+								"sink": {
+									"name": "cch_l3_descriptor",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['wd:@type']"
+								},
+								"sink": {
+									"name": "cch_l3_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][0]['_value_']"
+								},
+								"sink": {
+									"name": "cch_l3_value",
 									"type": "String"
 								}
 							}
