@@ -47,7 +47,46 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['wd:ID'][0]['wd:@type']"
+								},
+								"sink": {
+									"name": "wd:@type"
+								}
+							},
+							{
+								"source": {
+									"path": "['wd:ID'][0]['_value_']"
+								},
+								"sink": {
+									"name": "_value_"
+								}
+							},
+							{
+								"source": {
+									"path": "['wd:@Descriptor']"
+								},
+								"sink": {
+									"name": "wd:@Descriptor"
+								}
+							},
+							{
+								"source": {
+									"path": "['wd:ID'][1]['wd:@type']"
+								},
+								"sink": {
+									"name": "wd_1_type"
+								}
+							}
+						],
+						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']",
+						"mapComplexValuesToString": true
+					}
 				},
 				"inputs": [
 					{
