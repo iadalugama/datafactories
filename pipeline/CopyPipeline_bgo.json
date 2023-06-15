@@ -106,6 +106,14 @@
 								"sink": {
 									"name": "wd_2_value"
 								}
+							},
+							{
+								"source": {
+									"path": "['wd:ID'][3]['_value_']"
+								},
+								"sink": {
+									"name": "unknows"
+								}
 							}
 						],
 						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']",
