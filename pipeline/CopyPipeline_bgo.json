@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"path": " $['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][2]['wd:@type']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][2]['wd:@type']"
 								},
 								"sink": {
 									"name": "cch_l2_2_type",
