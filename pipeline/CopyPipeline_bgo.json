@@ -109,7 +109,7 @@
 							},
 							{
 								"source": {
-									"path": "['wd:ID'][3]['_value_']"
+									"path": "['wd:ID'][3]['wd:@type']"
 								},
 								"sink": {
 									"name": "unknows"
