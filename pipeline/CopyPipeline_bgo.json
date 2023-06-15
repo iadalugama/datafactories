@@ -161,10 +161,27 @@
 							},
 							{
 								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][2]['_value_']"
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][1]['wd:@type']"
 								},
 								"sink": {
-									"name": "cch_l3_2_value",
+									"name": "cch_l2_1_type"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['wd:@type']"
+								},
+								"sink": {
+									"name": "cch_l2_2_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][1]['_value_']"
+								},
+								"sink": {
+									"name": "cch_l2_1_value",
 									"type": "String"
 								}
 							}
