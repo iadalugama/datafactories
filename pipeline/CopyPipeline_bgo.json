@@ -92,7 +92,7 @@
 									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['wd:@type']"
 								},
 								"sink": {
-									"name": "cch_l2_type",
+									"name": "cch_l2_0_type",
 									"type": "String"
 								}
 							},
@@ -101,7 +101,7 @@
 									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L2']['wd:ID'][0]['_value_']"
 								},
 								"sink": {
-									"name": "cch_l2_value",
+									"name": "cch_l2_0_value",
 									"type": "String"
 								}
 							},
