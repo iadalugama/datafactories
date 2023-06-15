@@ -131,6 +131,24 @@
 									"name": "cch_l3_value",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][1]['wd:@type']"
+								},
+								"sink": {
+									"name": "cch_l3_1_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['wd:Report_Data']['wd:Report_Entry']['wd:Cost_Center_Hierarchies_group']['wd:L3']['wd:ID'][1]['_value_']"
+								},
+								"sink": {
+									"name": "cch_l3_1_value",
+									"type": "String"
+								}
 							}
 						],
 						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']['wd:CC']['wd:ID']",
