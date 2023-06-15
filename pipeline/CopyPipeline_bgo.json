@@ -47,37 +47,7 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['wd:@type']"
-								},
-								"sink": {
-									"name": "wd:@type"
-								}
-							},
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:ID'][0]['_value_']"
-								},
-								"sink": {
-									"name": "_value_"
-								}
-							},
-							{
-								"source": {
-									"path": "$['wd:Report_Data']['wd:Report_Entry'][0]['wd:CC'][0]['wd:@Descriptor']"
-								},
-								"sink": {
-									"name": "wd:@Descriptor"
-								}
-							}
-						],
-						"collectionReference": "$['wd:Report_Data']['wd:Report_Entry']"
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
