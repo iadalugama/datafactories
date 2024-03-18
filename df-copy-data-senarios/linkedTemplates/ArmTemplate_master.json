@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSynapseSynapsewsp01'"
 		},
+		"RestFHIR_clientSecret": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clientSecret' of 'RestFHIR'"
+		},
 		"SqlServerOnPrem_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServerOnPrem'"
@@ -30,6 +34,14 @@
 		"ADLS2_generaladls2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://generaladls2.dfs.core.windows.net/"
+		},
+		"RestFHIR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://telusfhirservice-telushealth.fhir.azurehealthcareapis.com"
+		},
+		"RestFHIR_properties_typeProperties_clientId": {
+			"type": "string",
+			"defaultValue": "9e35e2d1-7196-47d4-9f6a-67991b85940e"
 		},
 		"containerUri": {
 			"type": "string",
@@ -58,9 +70,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"ADLS2_generaladls2_accountKey": {
-						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
-					},
 					"AzurePgSql_test_rogers_connectionString": {
 						"value": "[parameters('AzurePgSql_test_rogers_connectionString')]"
 					},
@@ -70,8 +79,20 @@
 					"AzureSynapseSynapsewsp01_connectionString": {
 						"value": "[parameters('AzureSynapseSynapsewsp01_connectionString')]"
 					},
+					"RestFHIR_clientSecret": {
+						"value": "[parameters('RestFHIR_clientSecret')]"
+					},
+					"ADLS2_generaladls2_accountKey": {
+						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
+					},
 					"SqlServerOnPrem_connectionString": {
 						"value": "[parameters('SqlServerOnPrem_connectionString')]"
+					},
+					"RestFHIR_properties_typeProperties_url": {
+						"value": "[parameters('RestFHIR_properties_typeProperties_url')]"
+					},
+					"RestFHIR_properties_typeProperties_clientId": {
+						"value": "[parameters('RestFHIR_properties_typeProperties_clientId')]"
 					},
 					"ADLS2_generaladls2_properties_typeProperties_url": {
 						"value": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]"
@@ -98,6 +119,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'df-copy-data-senarios_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "df-copy-data-senarios_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'df-copy-data-senarios_ArmTemplate_1')]"
 			]
 		}
 	]

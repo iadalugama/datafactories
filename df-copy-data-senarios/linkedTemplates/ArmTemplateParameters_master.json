@@ -17,11 +17,20 @@
 		"AzureSynapseSynapsewsp01_connectionString": {
 			"value": ""
 		},
+		"RestFHIR_clientSecret": {
+			"value": ""
+		},
 		"SqlServerOnPrem_connectionString": {
 			"value": ""
 		},
 		"ADLS2_generaladls2_properties_typeProperties_url": {
 			"value": "https://generaladls2.dfs.core.windows.net/"
+		},
+		"RestFHIR_properties_typeProperties_url": {
+			"value": "https://telusfhirservice-telushealth.fhir.azurehealthcareapis.com"
+		},
+		"RestFHIR_properties_typeProperties_clientId": {
+			"value": "9e35e2d1-7196-47d4-9f6a-67991b85940e"
 		},
 		"containerUri": {
 			"value": ""
