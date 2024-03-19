@@ -23,13 +23,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'clientSecret' of 'RestFHIR'"
 		},
-		"ADLS2_generaladls2_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLS2_generaladls2'"
-		},
 		"SqlServerOnPrem_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServerOnPrem'"
+		},
+		"ADLS2_generaladls2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS2_generaladls2'"
 		},
 		"RestFHIR_properties_typeProperties_url": {
 			"type": "string",
@@ -146,42 +146,6 @@
 			"apiVersion": "2018-06-01",
 			"properties": {},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DataFlowIRVnet')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "Managed",
-				"typeProperties": {
-					"computeProperties": {
-						"location": "Canada Central",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 5,
-							"cleanup": false,
-							"customProperties": []
-						},
-						"copyComputeScaleProperties": {
-							"dataIntegrationUnit": 16,
-							"timeToLive": 5
-						},
-						"pipelineExternalComputeScaleProperties": {
-							"timeToLive": 5,
-							"numberOfPipelineNodes": 1,
-							"numberOfExternalNodes": 1
-						}
-					}
-				},
-				"managedVirtualNetwork": {
-					"type": "ManagedVirtualNetworkReference",
-					"referenceName": "default"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
-			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Azurepgsql_promocode_ds')]",
@@ -407,29 +371,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ADLS2_generaladls2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "DataFlowIRVnet",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowIRVnet')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/SqlServerOnPrem')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -446,6 +387,42 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/IROnPrem')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataFlowIRVnet')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Canada Central",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 5,
+							"cleanup": false,
+							"customProperties": []
+						},
+						"copyComputeScaleProperties": {
+							"dataIntegrationUnit": 16,
+							"timeToLive": 5
+						},
+						"pipelineExternalComputeScaleProperties": {
+							"timeToLive": 5,
+							"numberOfPipelineNodes": 1,
+							"numberOfExternalNodes": 1
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
 			]
 		},
 		{
@@ -479,79 +456,102 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinarySinkFileStore')]",
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyOnPremSQL_to_SynapseDW_xdq_SourceDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Connection to your destination data store.",
 				"linkedServiceName": {
-					"referenceName": "ADLS2_generaladls2",
+					"referenceName": "SqlServerOnPrem",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"container": {
-						"type": "string"
+					"cw_schema": {
+						"type": "String"
 					},
-					"directory": {
-						"type": "string"
+					"cw_table": {
+						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "MetadataDrivenCopyOnPremSQL_to_SynapseDW_xdq_20230406"
+				},
 				"annotations": [],
-				"type": "Binary",
+				"type": "SqlServerTable",
+				"schema": [],
 				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().directory",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().container",
-							"type": "Expression"
-						}
+					"schema": {
+						"value": "@dataset().cw_schema",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().cw_table",
+						"type": "Expression"
 					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ADLS2_generaladls2')]"
+				"[concat(variables('factoryId'), '/linkedServices/SqlServerOnPrem')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinarySourceFileStore')]",
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_lgz_SourceDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Connection to your source data store.",
 				"linkedServiceName": {
-					"referenceName": "ADLS2_generaladls2",
+					"referenceName": "SqlServerOnPrem",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"container": {
-						"type": "string"
+					"cw_schema": {
+						"type": "String"
 					},
-					"directory": {
-						"type": "string"
+					"cw_table": {
+						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "MetadataDrivenCopyTask_lgz_20230324"
+				},
 				"annotations": [],
-				"type": "Binary",
+				"type": "SqlServerTable",
+				"schema": [],
 				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().directory",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().container",
-							"type": "Expression"
-						}
+					"schema": {
+						"value": "@dataset().cw_schema",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().cw_table",
+						"type": "Expression"
 					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ADLS2_generaladls2')]"
+				"[concat(variables('factoryId'), '/linkedServices/SqlServerOnPrem')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADLS2_generaladls2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADLS2_generaladls2_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "DataFlowIRVnet",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowIRVnet')]"
 			]
 		}
 	]

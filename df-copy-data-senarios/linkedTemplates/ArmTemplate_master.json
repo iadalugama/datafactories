@@ -82,11 +82,11 @@
 					"RestFHIR_clientSecret": {
 						"value": "[parameters('RestFHIR_clientSecret')]"
 					},
-					"ADLS2_generaladls2_accountKey": {
-						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
-					},
 					"SqlServerOnPrem_connectionString": {
 						"value": "[parameters('SqlServerOnPrem_connectionString')]"
+					},
+					"ADLS2_generaladls2_accountKey": {
+						"value": "[parameters('ADLS2_generaladls2_accountKey')]"
 					},
 					"RestFHIR_properties_typeProperties_url": {
 						"value": "[parameters('RestFHIR_properties_typeProperties_url')]"
