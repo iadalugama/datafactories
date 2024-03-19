@@ -42,7 +42,7 @@
 				"     fileSystem: 'copy-row-data',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
-				"     optimizedWrite: true,",
+				"     optimizedWrite: false,",
 				"     vacuum: 0,",
 				"     deletable: false,",
 				"     insertable: true,",
