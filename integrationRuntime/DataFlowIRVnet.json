@@ -1,0 +1,31 @@
+{
+	"name": "DataFlowIRVnet",
+	"properties": {
+		"type": "Managed",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "Canada Central",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 5,
+					"cleanup": false,
+					"customProperties": []
+				},
+				"copyComputeScaleProperties": {
+					"dataIntegrationUnit": 16,
+					"timeToLive": 5
+				},
+				"pipelineExternalComputeScaleProperties": {
+					"timeToLive": 5,
+					"numberOfPipelineNodes": 1,
+					"numberOfExternalNodes": 1
+				}
+			}
+		},
+		"managedVirtualNetwork": {
+			"type": "ManagedVirtualNetworkReference",
+			"referenceName": "default"
+		}
+	}
+}
