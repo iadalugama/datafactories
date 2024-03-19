@@ -14,11 +14,11 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Parquet1",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "ADLS2_generaladls2",
+						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink2"
 				}
 			],
 			"transformations": [
@@ -38,12 +38,21 @@
 				"source1 derive(Column_1 = trim(Column_1)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     format: 'parquet',",
+				"     format: 'delta',",
+				"     fileSystem: 'copy-row-data',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink2"
 			]
 		}
 	}
