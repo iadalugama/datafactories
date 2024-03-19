@@ -3317,6 +3317,7 @@
 						"     validateSchema: false,",
 						"     format: 'delta',",
 						"     fileSystem: 'copy-row-data',",
+						"     overwrite: true,",
 						"     mergeSchema: false,",
 						"     autoCompact: false,",
 						"     optimizedWrite: false,",
