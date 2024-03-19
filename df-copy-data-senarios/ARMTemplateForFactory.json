@@ -3057,12 +3057,12 @@
 					}
 				},
 				"connectVia": {
-					"referenceName": "DataFlowsIR",
+					"referenceName": "DataFlowIRVnet",
 					"type": "IntegrationRuntimeReference"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowsIR')]"
+				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowIRVnet')]"
 			]
 		},
 		{
@@ -3187,7 +3187,7 @@
 						"dataFlowProperties": {
 							"computeType": "MemoryOptimized",
 							"coreCount": 8,
-							"timeToLive": 10,
+							"timeToLive": 5,
 							"cleanup": false,
 							"customProperties": []
 						}
@@ -3299,6 +3299,42 @@
 			"apiVersion": "2018-06-01",
 			"properties": {},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataFlowIRVnet')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Canada Central",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 5,
+							"cleanup": false,
+							"customProperties": []
+						},
+						"copyComputeScaleProperties": {
+							"dataIntegrationUnit": 16,
+							"timeToLive": 5
+						},
+						"pipelineExternalComputeScaleProperties": {
+							"timeToLive": 5,
+							"numberOfPipelineNodes": 1,
+							"numberOfExternalNodes": 1
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
 		}
 	]
 }
