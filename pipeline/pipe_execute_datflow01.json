@@ -20,14 +20,11 @@
 						"type": "DataFlowReference"
 					},
 					"integrationRuntime": {
-						"referenceName": "DataFlowsIR",
+						"referenceName": "DataFlowIRVnet",
 						"type": "IntegrationRuntimeReference"
 					},
-					"traceLevel": "None",
-					"runConcurrently": true,
-					"cacheSinks": {
-						"firstRowOnly": true
-					}
+					"traceLevel": "Fine",
+					"runConcurrently": true
 				}
 			}
 		],
