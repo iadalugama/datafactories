@@ -2212,8 +2212,11 @@
 								"referenceName": "DataFlowsIR",
 								"type": "IntegrationRuntimeReference"
 							},
-							"traceLevel": "Fine",
-							"runConcurrently": true
+							"traceLevel": "None",
+							"runConcurrently": true,
+							"cacheSinks": {
+								"firstRowOnly": true
+							}
 						}
 					}
 				],
@@ -3317,7 +3320,6 @@
 						"     validateSchema: false,",
 						"     format: 'delta',",
 						"     fileSystem: 'copy-row-data',",
-						"     overwrite: true,",
 						"     mergeSchema: false,",
 						"     autoCompact: false,",
 						"     optimizedWrite: true,",
