@@ -2209,14 +2209,11 @@
 							},
 							"staging": {},
 							"integrationRuntime": {
-								"referenceName": "DataFlowsIR",
+								"referenceName": "DataFlowIRVnet",
 								"type": "IntegrationRuntimeReference"
 							},
-							"traceLevel": "None",
-							"runConcurrently": true,
-							"cacheSinks": {
-								"firstRowOnly": true
-							}
+							"traceLevel": "Fine",
+							"runConcurrently": true
 						}
 					}
 				],
@@ -2227,7 +2224,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow1')]",
-				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowsIR')]"
+				"[concat(variables('factoryId'), '/integrationRuntimes/DataFlowIRVnet')]"
 			]
 		},
 		{
